@@ -1,13 +1,13 @@
-import * as actionTypes from "./actions";
+import * as actionTypes from "../actions";
 
 const reducer = (state = [], action) => {
   switch (action.type) {
+    case actionTypes.INIT_NOTES:
+      return action.data;
+
     case actionTypes.ADD_TODO:
-      return state.concat({
-        id: action.id + 1,
-        text: action.text,
-        completed: action.completed,
-      });
+      return [...state, action.data];
+
     case actionTypes.TOGGLE_TODO:
       const noteToChange = state.find((n) => n.id === action.id);
       const changeNote = {
@@ -16,20 +16,13 @@ const reducer = (state = [], action) => {
       };
       return state.map((note) => (note.id !== action.id ? note : changeNote));
 
+    case actionTypes.REMOVE_TODO:
+      const updateArray = state.filter((note) => note.id !== action.id);
+      return [...state, updateArray];
+
     default:
       return state;
   }
 };
-
-/* const initialState = {
-  note_list: [
-    {
-      id: 1,
-      text: "somenthing",
-      completed: false,
-    },
-  ],
-  text: [{ id: 2, text: "somenthing else", completed: false }],
-}; */
 
 export default reducer;

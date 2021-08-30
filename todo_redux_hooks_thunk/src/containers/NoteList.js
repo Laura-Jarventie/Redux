@@ -1,17 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as actionTypes from "../store/reducers/actions";
+import { toggleTodo } from "../store/actions";
+import { removeTodo } from "../store/actions";
 
 const NoteList = () => {
   const notes = useSelector((state) => state);
   const dispatch = useDispatch();
-
-  const toggleTodo = (id) => ({
-    type: actionTypes.TOGGLE_TODO,
-    id: id,
-  });
-
-  //const text = useSelector((state) => state.text); tää initialStatella, ylempi with empty arrey
 
   return (
     <div>
@@ -23,15 +17,16 @@ const NoteList = () => {
             className={note.completed ? "strike todo" : "todo"}
           >
             {note.text}
+            <button
+              key={note.id}
+              type="removeTodo"
+              onClick={() => dispatch(removeTodo(note.id))}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
-
-      {/* <ul>
-        {text.map((text) => (
-          <li key={text.id}>{text.text}</li>
-        ))}
-      </ul> */}
     </div>
   );
 };
