@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { createNote } from "../store/actions";
+import "../App.css";
 
 const NewNote = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const NewNote = () => {
   };
 
   return (
-    <form onSubmit={addTodo}>
+    <form onSubmit={addTodo} className="form">
       <input type="text" name="noteInput" />
       <input type="submit" value="Add note" />
     </form>

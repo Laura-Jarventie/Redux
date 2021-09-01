@@ -1,6 +1,10 @@
 import * as actionTypes from "../actions";
 
-const reducer = (state = [], action) => {
+const initialState = {
+  notes: [],
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INIT_NOTES:
       return action.data;
@@ -17,8 +21,10 @@ const reducer = (state = [], action) => {
       return state.map((note) => (note.id !== action.id ? note : changeNote));
 
     case actionTypes.REMOVE_TODO:
-      const updateArray = state.filter((note) => note.id !== action.id);
-      return [...state, updateArray];
+      //const updateArray = state.filter((note) => note.id !== action.id);
+      return state.filter((note) => note.id !== action.id);
+    //return [...state, action.data];
+    //return [updateArray];
 
     default:
       return state;

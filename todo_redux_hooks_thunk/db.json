@@ -1,34 +1,19 @@
 {
   "notes": [
     {
-      "text": "the app state is in redux store",
-      "completed": true,
-      "id": 1
-    },
-    {
-      "text": "some other stuff ",
-      "completed": false,
-      "id": 2
-    },
-    {
-      "text": "is this now coming?",
-      "completed": false,
-      "id": 3
-    },
-    {
-      "text": "sfsfsd",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "text": "sfasf",
+      "text": "eat",
       "completed": false,
       "id": 5
     },
     {
-      "text": "sdfasffsd",
+      "text": "sleep",
       "completed": false,
       "id": 6
+    },
+    {
+      "text": "repeat",
+      "completed": false,
+      "id": 7
     }
   ]
 }

@@ -10,22 +10,25 @@ const NoteList = () => {
   return (
     <div>
       <ul>
-        {notes.map((note) => (
-          <li
-            key={note.id}
-            onClick={() => dispatch(toggleTodo(note.id))}
-            className={note.completed ? "strike todo" : "todo"}
-          >
-            {note.text}
-            <button
+        <h3>I have currently {notes.length} tasks.</h3>
+
+        {notes &&
+          !!notes.length &&
+          notes.map((note) => (
+            <li
               key={note.id}
-              type="removeTodo"
-              onClick={() => dispatch(removeTodo(note.id))}
+              onClick={() => dispatch(toggleTodo(note.id))}
+              className={note.completed ? "strike todo" : "todo"}
             >
-              Delete
-            </button>
-          </li>
-        ))}
+              {note.text}
+              <span
+                className="material-icons"
+                onClick={() => dispatch(removeTodo(note.id))}
+              >
+                delete_fovever
+              </span>
+            </li>
+          ))}
       </ul>
     </div>
   );
